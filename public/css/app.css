@@ -1,0 +1,232 @@
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  header {
+    background-color: #ff6f00;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: 30px;
+}
+  
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    max-width: 100px;
+  }
+  
+  nav {
+    background-color: #ffd180;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+    font-weight: 700;
+    font-size: 1.2em;
+  }
+  
+  section {
+    padding: 20px;
+  }
+  
+  h3 {
+    color: #ff6f00;
+    font-size: 35px;;
+  }
+  ol a{
+    font-size: 18px;
+  }
+
+/* Estilos para la tabla de insumos */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #ff6f00;
+    color: white;
+    font-size: 20px;
+}
+
+.table td {
+    color: black;
+    font-size: 20px;
+}
+
+/* Estilos para resaltar la fila al pasar el mouse */
+.table-responsive tbody tr:hover {
+    background-color: #dfaeae;
+}
+
+/*Estilo del boton retroceder*/
+
+.img-atras {
+    width: 60px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+
+  /* Estilos para los productos */
+  .productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid #ff6f00;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .producto b {
+    font-size: 20px;
+  }
+  
+  .producto {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #ffd180;
+    border-radius: 4px;
+  }
+  
+  
+  .producto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  
+  }
+  
+  .producto:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s, box-shadow 0.4s;
+    transform: scale(1.10);
+
+  }
+  
+  /* Estilos para las imágenes en la lista de productos */
+  .product img {
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+   
+  }
+  
+  .ver-menu {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ff6f00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100px;
+    
+  }
+  
+  .mapa {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+  }
+
+  .boton-asistente {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px; 
+  }
+  
+  .boton-asistente button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .boton-asistente button img {
+    width: 100px; 
+    height: 100px;
+  }
+
+.microfono-button {
+    transition: transform 0.2s ease-in-out;
+}
+
+.microfono-button.presionado {
+    transform: scale(0.9);
+}
+  
+/*ESTILOS DEL CARRUSEL*/
+
+section.awSlider .carousel {
+    display: table;
+    z-index: 2;
+    -moz-box-shadow: 0 0 4px #ec6c047a;
+    -webkit-box-shadow: 0 0 4px #444;
+    box-shadow: 0 0 15px rgba(1, 1, 1, 0.5);
+}
+
+section.awSlider {
+    margin: 30px auto;
+    padding: 30px;
+    position: relative;
+    display: table;
+}
+
+section.awSlider:hover > img {
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+section.awSlider img {
+    pointer-events: none;
+}
+
+section.awSlider > img {
+    position: absolute;
+    z-index: 1;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    filter: blur(1.8vw);
+    -webkit-filter: blur(2vw);
+    -moz-filter: blur(2vw);
+    -o-filter: blur(2vw);
+    -ms-filter: blur(2vw);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+/*ESTILO DEL FOOTER*/
+footer {
+    background-color: #ff6f00;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}
