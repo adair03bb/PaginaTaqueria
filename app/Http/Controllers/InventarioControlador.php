@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use App\Models\InsumosCompras;
 
 class InventarioControlador extends Controller
 {
@@ -12,7 +13,9 @@ class InventarioControlador extends Controller
      */
     public function index()
     {
-        //
+        $inventario=Inventario::all();
+        $insumosCompras=InsumosCompras::all();
+        return view('inventario.index',compact('inventario','insumosCompras'));
     }
 
     /**
@@ -28,7 +31,11 @@ class InventarioControlador extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inventario=new Inventario;
+        $inventario->fechaCaducidad=$request->input('fechaCaducidad');
+        $inventario->ID_InsumoCompra=$request->input('ID_InsumoCompra');
+        $inventario->save();
+        return redirect()->back();
     }
 
     /**
@@ -42,7 +49,7 @@ class InventarioControlador extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Inventario $inventario)
+    public function edit($id)
     {
         //
     }
@@ -50,16 +57,22 @@ class InventarioControlador extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, $id)
     {
-        //
+        $inventario= Inventario::find($id);
+        $inventario->fechaCaducidad=$request->input('fechaCaducidad');
+        $inventario->ID_InsumoCompra=$request->input('ID_InsumoCompra');
+        $inventario->update();
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Inventario $inventario)
+    public function destroy($id)
     {
-        //
+        $inventario= Inventario::find($id);
+        $inventario->delete();
+        return redirect()->back();
     }
 }

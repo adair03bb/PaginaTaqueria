@@ -5,27 +5,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">AGREGAR NUEVO PRODUCTO</h5>
+        <h5 class="modal-title" id="exampleModalLabel">AGREGAR UNA NUEVA COMPRA DE INSUMOS</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-      <form action="{{route('homeInsumosProductos.store')}}" method="post">
+      <form action="{{route('homeInsumosCompras.store')}}" method="post">
         @csrf 
       <div class="modal-body">
 
       <div class="mb-3">
-            <label for="" class="form-label">Producto:</label>
-            <select name="ID_Producto" id="" class="form-control">
-                @foreach($productos as $productos)
-                <option value="{{$productos->id}}"> {{$productos->nombre}} </option>
-                @endforeach
-            </select>
-           
-        </div>
-
-        <div class="mb-3">
             <label for="" class="form-label">Insumo:</label>
             <select name="ID_Insumo" id="" class="form-control">
                 @foreach($insumos as $insumos)
@@ -33,14 +23,22 @@
                 @endforeach
             </select>
            
-        </div>
-
-
-        <div class="mb-3">
+        </div>  
+      
+      <div class="mb-3">
             <label for="" class="form-label">Cantidad:</label>
             <input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder=""/>
         </div>
 
+        <div class="mb-3">
+            <label for="" class="form-label">Costo:</label>
+            <input type="number" class="form-control" name="costo" id="costo" aria-describedby="helpId" placeholder=""/>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Fecha:</label>
+            <input type="datetime-local" class="form-control" name="fecha" id="fecha" aria-describedby="helpId" placeholder=""/>
+        </div>
         
       </div>
       <div class="modal-footer">

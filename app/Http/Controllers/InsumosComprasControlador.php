@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InsumosCompras;
+use App\Models\Insumos;
 use Illuminate\Http\Request;
+use App\Models\InsumosCompras;
 
 class InsumosComprasControlador extends Controller
 {
@@ -12,7 +13,9 @@ class InsumosComprasControlador extends Controller
      */
     public function index()
     {
-        //
+        $insumosCompras=InsumosCompras::all();
+        $insumos=Insumos::all();
+        return view('insumoscompras.index',compact('insumosCompras','insumos'));
     }
 
     /**
@@ -28,7 +31,13 @@ class InsumosComprasControlador extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insumosCompras=new InsumosCompras;
+        $insumosCompras->cantidad=$request->input('cantidad');
+        $insumosCompras->costo=$request->input('costo');
+        $insumosCompras->ID_Insumo=$request->input('ID_Insumo');
+        $insumosCompras->fecha=$request->input('fecha');
+        $insumosCompras->save();
+        return redirect()->back();
     }
 
     /**
@@ -42,24 +51,32 @@ class InsumosComprasControlador extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InsumosCompras $insumosCompras)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, InsumosCompras $insumosCompras)
+    public function update(Request $request, $id)
     {
-        //
+        $insumosCompras=InsumosCompras::find($id);
+        $insumosCompras->cantidad=$request->input('cantidad');
+        $insumosCompras->costo=$request->input('costo');
+        $insumosCompras->ID_Insumo=$request->input('ID_Insumo');
+        $insumosCompras->fecha=$request->input('fecha');
+        $insumosCompras->update();
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(InsumosCompras $insumosCompras)
+    public function destroy($id)
     {
-        //
+        $insumosCompras=InsumosCompras::find($id);
+        $insumosCompras->delete();
+        return redirect()->back();
     }
 }

@@ -20,7 +20,7 @@
 <div>
 <div class="boton-modal">
     <label for="btn-modal">
-        Abrir y Reproducir
+        Abrir
     </label>
 </div>
 

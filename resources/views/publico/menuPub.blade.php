@@ -29,17 +29,6 @@
       <p>¿Por qué conformarte con un solo taco?.</p>
       
     </section>
-
-  
-    <section>
-      <img src="../imagenes/medioK.jpg" alt="trompa">
-      <h4>
-        <button class="menu-button" onclick="location.href='../VISTA/trompa.html'">Trompa</button>
-      </h4>
-      <p>Un comida pequeña pero sabrosa.</p>
-
-    </section>
-
   
     <section>
       <img src="../imagenes/costilla-resscalado.jpg" alt="costilla">

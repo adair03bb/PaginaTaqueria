@@ -1,4 +1,4 @@
-@extends('layouts/homeInsumosProductos')
+@extends('layouts/homeInsumosCompras')
 
 
 @section('content')
@@ -9,17 +9,17 @@
     <div class="col-md-8">
 
     <br><br>
-    <h3>ADMINISTRA LOS INSUMOS QUE USAS EN TUS PRODUCTOS</h3>
+    <h3>AGREGA NUEVAS COMPRAS DE TUS INSUMOS</h3>
     <br>
-
-    <!-- Boton para regresar -->
-    <a href="{{url('homeMenu')}}">
+        
+        <!-- Boton para regresar -->
+        <a href="{{url('homeMenu')}}">
                 <img class="img-atras" src="{{ asset('imagenes/atras.png') }}">
             </a>
-        
+
         <!-- Boton para agregar -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-        NUEVO
+        AGREGAR COMPRA
         </button>
         
         <br><br>
@@ -30,39 +30,40 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">PRODUCTO</th>
                         <th scope="col">INSUMO</th>
                         <th scope="col">CANTIDAD</th>
+                        <th scope="col">COSTO</th>
+                        <th scope="col">FECHA DE COMPRA</th>
                         <th scope="col">ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($insumosProductos as $insumosProductos)
+                @foreach($insumosCompras as $insumosCompras)
                     <tr>
-                        <td> {{$insumosProductos->id}} </td>
-                        <td> {{$insumosProductos->Productos->nombre}} </td>
-                        <td> {{$insumosProductos->Insumos->nombre}} </td>
-                        <td> {{$insumosProductos->cantidad}} </td>
-                        
+                        <td> {{$insumosCompras->id}} </td>
+                        <td> {{$insumosCompras->Insumos->nombre}} </td>
+                        <td> {{$insumosCompras->cantidad}} </td>
+                        <td> {{$insumosCompras->costo}} </td>
+                        <td> {{$insumosCompras->fecha}} </td>
                         <td>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$insumosProductos->id}}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$insumosCompras->id}}">
                             EDITAR
                         </button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$insumosProductos->id}}">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$insumosCompras->id}}">
                             ELIMINAR   
                         </button>
         
                         </td>
                     </tr>
 
-                    @include('insumosproductos.info')
+                    @include('insumoscompras.info')
 
                     @endforeach
                 </tbody>
             </table>
         </div>
 
-        @include('insumosproductos.create')
+        @include('insumoscompras.create')
 </div>
 
 </div>
