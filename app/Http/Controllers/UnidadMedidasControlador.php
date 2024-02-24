@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Insumos;
-use Illuminate\Http\Request;
 use App\Models\UnidadMedidas;
+use Illuminate\Http\Request;
 
-class InsumosControlador extends Controller
+class UnidadMedidasControlador extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $insumos=Insumos::all();
         $unidadMedidas=UnidadMedidas::all();
-        return view('insumos.index',compact('insumos','unidadMedidas'));
+        return view('../unidadmedidas.index',compact('unidadMedidas'));
     }
 
     /**
@@ -32,25 +30,23 @@ class InsumosControlador extends Controller
     public function store(Request $request)
     {
         // Validar si el nombre ya existe en la base de datos
-        $nombreExistente = Insumos::where('nombre', $request->input('nombre'))->exists();
+        $nombreExistente = UnidadMedidas::where('nombre', $request->input('nombre'))->exists();
 
         if ($nombreExistente) {
         // Si el nombre ya existe, redirecciona con un mensaje de error
         return redirect()->back()->withErrors(['nombre' => 'El insumo ya existe en la base de datos.'])->withInput();
     }
 
-        $insumos=new Insumos;
-        $insumos->nombre=$request->input('nombre');
-        $insumos->descripcion=$request->input('descripcion');
-        $insumos->ID_UnidadMedida=$request->input('ID_UnidadMedida');
-        $insumos->save();
+        $unidadMedidas=new UnidadMedidas;
+        $unidadMedidas->nombre=$request->input('nombre');
+        $unidadMedidas->save();
         return redirect()->back()->with('success', 'Insumo creado correctamente.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Insumos $insumos)
+    public function show(UnidadMedidas $unidadMedidas)
     {
         //
     }
@@ -66,13 +62,11 @@ class InsumosControlador extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $insumos=Insumos::find($id);
-        $insumos->nombre=$request->input('nombre');
-        $insumos->descripcion=$request->input('descripcion');
-        $insumos->ID_UnidadMedida=$request->input('ID_UnidadMedida');
-        $insumos->update();
+        $unidadMedidas=UnidadMedidas::find($id);
+        $unidadMedidas->nombre=$request->input('nombre');
+        $unidadMedidas->update();
         return redirect()->back();
     }
 
@@ -81,8 +75,8 @@ class InsumosControlador extends Controller
      */
     public function destroy($id)
     {
-        $insumos=Insumos::find($id);
-        $insumos->delete();
+        $unidadMedidas=UnidadMedidas::find($id);
+        $unidadMedidas->delete();
         return redirect()->back();
     }
 }

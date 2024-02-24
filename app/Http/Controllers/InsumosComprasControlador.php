@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Insumos;
 use Illuminate\Http\Request;
+use App\Models\UnidadMedidas;
 use App\Models\InsumosCompras;
 
 class InsumosComprasControlador extends Controller
@@ -15,7 +16,8 @@ class InsumosComprasControlador extends Controller
     {
         $insumosCompras=InsumosCompras::all();
         $insumos=Insumos::all();
-        return view('insumoscompras.index',compact('insumosCompras','insumos'));
+        $unidadMedidas=UnidadMedidas::all();
+        return view('insumoscompras.index',compact('insumosCompras','insumos','unidadMedidas'));
     }
 
     /**
@@ -35,6 +37,7 @@ class InsumosComprasControlador extends Controller
         $insumosCompras->cantidad=$request->input('cantidad');
         $insumosCompras->costo=$request->input('costo');
         $insumosCompras->ID_Insumo=$request->input('ID_Insumo');
+        $insumosCompras->ID_UnidadMedida=$request->input('ID_UnidadMedida');
         $insumosCompras->fecha=$request->input('fecha');
         $insumosCompras->save();
         return redirect()->back();
@@ -65,6 +68,7 @@ class InsumosComprasControlador extends Controller
         $insumosCompras->cantidad=$request->input('cantidad');
         $insumosCompras->costo=$request->input('costo');
         $insumosCompras->ID_Insumo=$request->input('ID_Insumo');
+        $insumosCompras->ID_UnidadMedida=$request->input('ID_UnidadMedida');
         $insumosCompras->fecha=$request->input('fecha');
         $insumosCompras->update();
         return redirect()->back();

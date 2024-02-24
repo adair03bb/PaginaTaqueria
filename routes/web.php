@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoriaControlador;
 use App\Http\Controllers\ProductosControlador;
 use App\Http\Controllers\UbicacionControlador;
 use App\Http\Controllers\InventarioControlador;
+use App\Http\Controllers\UnidadMedidasControlador;
 use App\Http\Controllers\InsumosComprasControlador;
 use App\Http\Controllers\ProductosVentasControlador;
 use App\Http\Controllers\InsumosProductosControlador;
@@ -45,4 +46,6 @@ Route::resource('homeMenu', MenuControlador::class);
 Route::resource('homePublico', PublicoControlador::class);
 Route::resource('homeMenuPub', MenuPubControlador::class);
 Route::resource('homeUbicacion', UbicacionControlador::class);
+Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
+
 

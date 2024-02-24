@@ -28,6 +28,20 @@
             </select>
            
         </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Uidade de Medida:</label>
+            <select name="ID_UnidadMedida" id="" class="form-control">
+                @foreach($unidadMedidas as $unidadMedidas)
+                @if($unidadMedidas->id == $insumosCompras->ID_UnidadMedida)
+                <option value="{{$unidadMedidas->id}}" selected> {{$unidadMedidas->nombre}} </option>
+                @else
+                <option value="{{$unidadMedidas->id}}"> {{$unidadMedidas->nombre}} </option>
+                @endif
+                @endforeach
+            </select>
+           
+        </div>
       
       <div class="mb-3">
             <label for="" class="form-label">Cantidad:</label>

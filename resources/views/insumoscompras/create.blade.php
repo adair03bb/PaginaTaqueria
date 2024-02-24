@@ -23,7 +23,17 @@
                 @endforeach
             </select>
            
-        </div>  
+        </div> 
+        
+        <div class="mb-3">
+            <label for="" class="form-label">Unidad de Medida:</label>
+            <select name="ID_UnidadMedida" id="" class="form-control">
+                @foreach($unidadMedidas as $unidadMedidas)
+                <option value="{{$unidadMedidas->id}}"> {{$unidadMedidas->nombre}} </option>
+                @endforeach
+            </select>
+           
+        </div>
       
       <div class="mb-3">
             <label for="" class="form-label">Cantidad:</label>

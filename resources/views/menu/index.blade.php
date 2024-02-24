@@ -78,4 +78,28 @@
         </div>
     </div>
 
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-image"> <img src="{{ asset('imagenes/medidas.jpg') }}" alt="SECCION DE UNIDADES DE MEDIDA" class="img-fluid" style="margin: 1rem;">
+                </div>
+                <h5 class="card-title">SECCIÓN DE UNIDADES DE MEDIDA</h5>
+                <p class="card-text">Adminstra tus unidades de medida.</p>
+                <a href="{{url('homeUnidadMedidas')}}" class="btn btn-primary">Ir a unidades de medida :D</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-image"> <img src="{{ asset('imagenes/ventas.jpg') }}" alt="SECCION DE VENTAS" class="img-fluid" style="margin: 1rem;">
+                </div>
+                <h5 class="card-title">SECCIÓN DE VENTAS</h5>
+                <p class="card-text">Adminstra tus ventas.</p>
+                <a href="{{url('homeUnidadMedidas')}}" class="btn btn-primary">Ir a ventas :D</a>
+            </div>
+        </div>
+    </div>
+
 @endsection

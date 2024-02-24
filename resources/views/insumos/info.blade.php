@@ -25,8 +25,17 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Unidad de Medida:</label>
-            <input type="text" class="form-control" name="unidadMedida" id="unidadMedida" aria-describedby="helpId" placeholder="" value="{{$insumos->unidadMedida}}" />
+            <label for="" class="form-label">Uidade de Medida:</label>
+            <select name="ID_UnidadMedida" id="" class="form-control">
+                @foreach($unidadMedidas as $unidadMedidas)
+                @if($unidadMedidas->id == $insumos->ID_UnidadMedida)
+                <option value="{{$unidadMedidas->id}}" selected> {{$unidadMedidas->nombre}} </option>
+                @else
+                <option value="{{$unidadMedidas->id}}"> {{$unidadMedidas->nombre}} </option>
+                @endif
+                @endforeach
+            </select>
+           
         </div>
         
       </div>
