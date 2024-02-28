@@ -14,8 +14,8 @@ class Insumos extends Model
     protected $guarded=[];
     public $timestamps=false;
 
-    public function UnidadMedidas(){
-        return $this->hasOne(UnidadMedidas::class,'id', 'ID_UnidadMedida');
+    public function unidadMedida(){
+        return $this->belongsTo(UnidadMedidas::class,'ID_UnidadMedida');
     } 
 
     

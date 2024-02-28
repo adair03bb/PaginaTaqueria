@@ -14,8 +14,13 @@ class Productos extends Model
     protected $guarded=[];
     public $timestamps=false;
 
+    public function insumosProductos()
+    {
+        return $this->hasMany(InsumosProductos::class, 'ID_Producto', 'id');
+    }
+
     public function Categoria(){
-        return $this->hasOne(Categoria::class,'id', 'ID_Categoria');
+        return $this->belongsTo(Categoria::class,'ID_Categoria');
     }   
 }
 

@@ -18,8 +18,18 @@
       <div class="mb-3">
             <label for="" class="form-label">Producto:</label>
             <select name="ID_Producto" id="" class="form-control">
-                @foreach($productos as $productos)
-                <option value="{{$productos->id}}"> {{$productos->nombre}} </option>
+                @foreach($productos as $producto)
+                <option value="{{$producto->id}}"> {{$producto->nombre}} </option>
+                @endforeach
+            </select>
+           
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Categoria:</label>
+            <select name="ID_Categoria" id="" class="form-control">
+                @foreach($categorias as $categoria)
+                <option value="{{$categoria->id}}"> {{$categoria->nombre}} </option>
                 @endforeach
             </select>
            
@@ -27,9 +37,9 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Insumo:</label>
-            <select name="ID_Insumo" id="" class="form-control">
-                @foreach($insumos as $insumos)
-                <option value="{{$insumos->id}}"> {{$insumos->nombre}} </option>
+            <select name="ID_Insumo[]" id="" class="form-control" multiple>
+                @foreach($insumos as $insumo)
+                <option value="{{$insumo->id}}"> {{$insumo->nombre}} </option>
                 @endforeach
             </select>
            
@@ -37,15 +47,27 @@
 
 
         <div class="mb-3">
-            <label for="" class="form-label">Cantidad:</label>
-            <input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder=""/>
-        </div>
+                        <label for="" class="form-label">Cantidades:</label>
+                        @foreach($insumos as $insumoCantidad)
+                        <div class="mb-2">
+                            <label for="cantidad_{{ $insumoCantidad->id }}">{{ $insumoCantidad->nombre }}:</label>
+                            <input type="number" step="any" class="form-control" name="cantidades[{{ $insumoCantidad->id }}]" id="cantidad_{{ $insumoCantidad->id }}" aria-describedby="helpId" placeholder="" />
+                          
+                            <!--AGREGAR UNIDAD DE MEDIDA PARA CADA INUSMO-->
+                            <label for="" class="form-label">Unidad Medida:</label>
+                            <select name="ID_UnidadMedida" id="" class="form-control">
+                            @foreach($unidadMedida as $unidad)
+                            <option value="{{$unidad->id}}"> {{$unidad->nombre}} </option>
+                           @endforeach
+                          </select>
+                        </div>
+                        @endforeach
+          </div>
 
-        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="sumbit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
       </form>
     </div>

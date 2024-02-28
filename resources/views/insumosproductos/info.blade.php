@@ -1,6 +1,6 @@
 
 <!-- Modal DE ACTUALIZAR Y ELIMINAR -->
-<div class="modal fade" id="edit{{$insumosProductos->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$insumoProducto->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,7 +10,7 @@
         </button>
       </div>
 
-      <form action="{{route('homeInsumosProductos.update',$insumosProductos->id)}}" method="post">
+      <form action="{{route('homeInsumosProductos.update',$insumoProducto->id)}}" method="post">
         @csrf 
         @method('PUT')
       <div class="modal-body">
@@ -18,11 +18,11 @@
       <div class="mb-3">
             <label for="" class="form-label">Producto:</label>
             <select name="ID_Producto" id="" class="form-control">
-                @foreach($productos as $productos)
-                @if($productos->id == $insumosProductos->ID_Producto)
-                <option value="{{$productos->id}}" selected> {{$productos->nombre}} </option>
+                @foreach($productos as $producto)
+                @if($producto->id == $insumoProducto->ID_Producto)
+                <option value="{{$producto->id}}" selected> {{$producto->nombre}} </option>
                 @else
-                <option value="{{$productos->id}}"> {{$productos->nombre}} </option>
+                <option value="{{$producto->id}}"> {{$producto->nombre}} </option>
                 @endif
                 @endforeach
             </select>
@@ -31,12 +31,12 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Insumo:</label>
-            <select name="ID_Insumo" id="" class="form-control">
-                @foreach($insumos as $insumos)
-                @if($insumos->id == $insumosProductos->ID_Insumo)
-                <option value="{{$insumos->id}}" selected> {{$insumos->nombre}} </option>
+            <select name="ID_Insumo[]" id="" class="form-control" multiple>
+                @foreach($insumos as $insumo)
+                @if($insumo->id == $insumoProducto->ID_Insumo)
+                <option value="{{$insumo->id}}" selected> {{$insumo->nombre}} </option>
                 @else
-                <option value="{{$insumos->id}}"> {{$insumos->nombre}} </option>
+                <option value="{{$insumo->id}}"> {{$insumo->nombre}} </option>
                 @endif
                 @endforeach
             </select>
@@ -44,9 +44,14 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Cantidad:</label>
-            <input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId" placeholder="" value="{{$insumosProductos->cantidad}}"/>
-        </div>
+                        <label for="" class="form-label">Cantidades:</label>
+                        @foreach($insumos as $insumoCantidad)
+                        <div class="mb-2">
+                            <label for="cantidad_{{ $insumoCantidad->id }}">{{ $insumoCantidad->nombre }}:</label>
+                            <input type="number" step="any" class="form-control" name="cantidades[{{ $insumoCantidad->id }}]" id="cantidad_{{ $insumoCantidad->id }}" aria-describedby="helpId" placeholder="" />
+                        </div>
+                        @endforeach
+          </div>
 
 
        
@@ -62,7 +67,7 @@
 </div>
 
 <!-- VALIDACION PARA ELIMINAR REGISTRO -->
-<div class="modal fade" id="delete{{$insumosProductos->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete{{$insumoProducto->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -72,11 +77,11 @@
         </button>
       </div>
 
-    <form action="{{route('homeInsumosProductos.destroy', $insumosProductos->id)}}" method="post">
+    <form action="{{route('homeInsumosProductos.destroy', $insumoProducto->id)}}" method="post">
         @csrf 
         @method('DELETE')
       <div class="modal-body">
-       ¿ESTAS SEGURO DE ELIMINAR EL REGISTRO <strong>{{$insumosProductos->id}} ?</strong>
+       ¿ESTAS SEGURO DE ELIMINAR EL REGISTRO <strong>{{$insumoProducto->id}} ?</strong>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="sumbit" class="btn btn-primary">Confirmar</button>

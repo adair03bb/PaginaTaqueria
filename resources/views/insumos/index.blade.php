@@ -42,7 +42,7 @@
                             <td> {{$insumos->id}} </td>
                             <td> {{$insumos->nombre}} </td>
                             <td> {{$insumos->descripcion}} </td>
-                            <td> {{$insumos->UnidadMedidas->nombre}} </td>
+                            <td> {{$insumos->unidadMedida->nombre}} </td>
                             <td>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$insumos->id}}">
                                 EDITAR

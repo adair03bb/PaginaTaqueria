@@ -97,7 +97,7 @@
                 </div>
                 <h5 class="card-title">SECCIÓN DE VENTAS</h5>
                 <p class="card-text">Adminstra tus ventas.</p>
-                <a href="{{url('homeUnidadMedidas')}}" class="btn btn-primary">Ir a ventas :D</a>
+                <a href="{{url('homeVentas')}}" class="btn btn-primary">Ir a ventas :D</a>
             </div>
         </div>
     </div>

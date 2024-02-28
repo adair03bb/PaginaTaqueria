@@ -10,15 +10,23 @@ class InsumosProductos extends Model
     use HasFactory;
     protected $table='insumosproductos';
     protected $primaryKey='id';
-    protected $fillable=['cantidad', 'ID_Insumo', 'ID_Producto'];
+    protected $fillable=['cantidad','insumos', 'ID_Insumo','ID_UnidadMedida','ID_Producto','ID_Categoria'];
     protected $guarded=[];
     public $timestamps=false;
 
-    public function Insumos(){
-        return $this->hasOne(Insumos::class,'id', 'ID_Insumo');
+    public function insumo(){
+        return $this->belongsTo(Insumos::class, 'ID_Insumo');
     }
 
-    public function Productos(){
-        return $this->hasOne(Productos::class,'id', 'ID_Producto');
+    public function producto(){
+        return $this->belongsTo(Productos::class, 'ID_Producto');
     }
+
+    public function unidadMedida(){
+        return $this->belongsTo(UnidadMedidas::class, 'ID_UnidadMedida');
+    }
+    public function categoria(){
+        return $this->belongsTo(Categoria::class, 'ID_Categoria');
+    }
+    
 }

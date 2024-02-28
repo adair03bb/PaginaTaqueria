@@ -47,5 +47,7 @@ Route::resource('homePublico', PublicoControlador::class);
 Route::resource('homeMenuPub', MenuPubControlador::class);
 Route::resource('homeUbicacion', UbicacionControlador::class);
 Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
+Route::resource('homeVentas', UnidadMedidasControlador::class);
+
 
 
