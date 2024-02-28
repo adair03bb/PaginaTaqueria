@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Ventas;
 use Illuminate\Http\Request;
 
-class Ventas extends Controller
+class VentasControlador extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('../ventas.index');
     }
 
     /**

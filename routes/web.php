@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuControlador;
+use App\Http\Controllers\VentasControlador;
 use App\Http\Controllers\InsumosControlador;
 use App\Http\Controllers\MenuPubControlador;
 use App\Http\Controllers\PublicoControlador;
@@ -47,7 +48,7 @@ Route::resource('homePublico', PublicoControlador::class);
 Route::resource('homeMenuPub', MenuPubControlador::class);
 Route::resource('homeUbicacion', UbicacionControlador::class);
 Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
-Route::resource('homeVentas', UnidadMedidasControlador::class);
+Route::resource('homeVentas', VentasControlador::class);
 
 
 
