@@ -10,7 +10,7 @@ class InsumosProductos extends Model
     use HasFactory;
     protected $table='insumosproductos';
     protected $primaryKey='id';
-    protected $fillable=['cantidad','insumos', 'ID_Insumo','ID_UnidadMedida','ID_Producto','ID_Categoria'];
+    protected $fillable=['cantidad', 'ID_Insumo','ID_UnidadMedida','ID_Producto','ID_Categoria'];
     protected $guarded=[];
     public $timestamps=false;
 
