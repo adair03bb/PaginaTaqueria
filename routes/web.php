@@ -12,6 +12,7 @@ use App\Http\Controllers\UbicacionControlador;
 use App\Http\Controllers\InventarioControlador;
 use App\Http\Controllers\UnidadMedidasControlador;
 use App\Http\Controllers\InsumosComprasControlador;
+use App\Http\Controllers\MostrarInsumosControlador;
 use App\Http\Controllers\ProductosVentasControlador;
 use App\Http\Controllers\InsumosProductosControlador;
 
@@ -39,6 +40,7 @@ Route::resource('home', InsumosControlador::class);
 Route::resource('homeInsumosCompras', InsumosComprasControlador::class);
 Route::resource('homeCategorias', CategoriaControlador::class);
 Route::resource('homeProductos', ProductosControlador::class);
+Route::get('/mostrarInsumos/{id}', [ProductosControlador::class, 'mostrarInsumosForm'])->name('mostrarInsumosForm');
 Route::resource('homeProductosVentas', ProductosVentasControlador::class);
 Route::resource('homeInventario', InventarioControlador::class);
 Route::resource('homeInsumosProductos', InsumosProductosControlador::class);
@@ -49,6 +51,9 @@ Route::resource('homeMenuPub', MenuPubControlador::class);
 Route::resource('homeUbicacion', UbicacionControlador::class);
 Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
 Route::resource('homeVentas', VentasControlador::class);
+Route::get('/mostrar-insumos/{productoId}', [MostrarInsumosControlador::class, 'verInsumos'])->name('verInsumos');
+
+
 
 
 

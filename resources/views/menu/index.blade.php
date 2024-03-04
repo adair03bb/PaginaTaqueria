@@ -54,17 +54,6 @@
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-image"> <img src="{{ asset('imagenes/insumosPr.jpg') }}" alt="SECCION DE INSUMOS-PRODUCTOS" class="img-fluid" style="margin: 1rem;">
-                </div>
-                <h5 class="card-title">SECCIÓN DE INSUMOS DE PRODUCTOS</h5>
-                <p class="card-text">Adminstra tus insumos que usas en tus productos.</p>
-                <a href="{{url('homeInsumosProductos')}}" class="btn btn-primary">Ir a Insumos-Productos :D</a>
-            </div>
-        </div>
-    </div>
 
     <div class="col-md-4">
         <div class="card">

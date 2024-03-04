@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Productos;
+use App\Models\Insumos;
 use App\Models\Categoria;
+use App\Models\Productos;
 use Illuminate\Http\Request;
+use App\Models\UnidadMedidas;
+use App\Models\InsumosProductos;
 
 class ProductosControlador extends Controller
 {
@@ -15,7 +18,9 @@ class ProductosControlador extends Controller
     {
         $productos=Productos::all();
         $categoria=Categoria::all();
-        return view('productos.index',compact('productos','categoria'));
+        $insumo=Insumos::all();
+        $unidadMedida = UnidadMedidas::all();
+        return view('productos.index',compact('productos','categoria','insumo','unidadMedida'));
     }
 
     /**
@@ -74,8 +79,13 @@ class ProductosControlador extends Controller
      */
     public function destroy($id)
     {
-        $productos=Productos::find($id);
-        $productos->delete();
-        return redirect()->back()->with('success', 'Categoria creado correctamente.');
+        // Eliminar registros relacionados en la tabla insumosproductos
+    InsumosProductos::where('ID_Producto', $id)->delete();
+
+    // Eliminar el producto
+    $productos = Productos::find($id);
+    $productos->delete();
+
+    return redirect()->back()->with('success', 'Producto eliminado correctamente.');
     }
 }

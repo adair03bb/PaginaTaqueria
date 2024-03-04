@@ -14,13 +14,22 @@ class Productos extends Model
     protected $guarded=[];
     public $timestamps=false;
 
+
+    public function unidadMedida(){
+        return $this->belongsTo(UnidadMedidas::class, 'ID_UnidadMedida');
+    }
+
     public function insumosProductos()
     {
         return $this->hasMany(InsumosProductos::class, 'ID_Producto', 'id');
     }
 
-    public function Categoria(){
-        return $this->belongsTo(Categoria::class,'ID_Categoria');
-    }   
+    public function categoria(){
+        return $this->belongsTo(Categoria::class, 'ID_Categoria');
+    }
+
+    public function insumo(){
+        return $this->belongsTo(Insumos::class, 'ID_Insumo');
+    }
 }
 

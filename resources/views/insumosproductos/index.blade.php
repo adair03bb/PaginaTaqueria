@@ -42,9 +42,9 @@
                 @foreach($insumosProductos as $insumoProducto)
                     <tr>
                         <td> {{$insumoProducto->id}} </td>
-                        <td> {{$insumoProducto->producto->nombre}} </td>
-                        <td> {{$insumoProducto->categoria->nombre}} </td>
-                        <td> {{$insumoProducto->insumo->nombre}} </td>
+                        <td> {{$insumoProducto->producto->id}} </td>
+                        <td> {{$insumoProducto->categoria->id}} </td>
+                        <td> {{$insumoProducto->insumo->id}} </td>
                         <td> {{$insumoProducto->cantidad}} </td>
                         <td> {{$insumoProducto->unidadMedida->nombre}} </td>
                         
@@ -60,6 +60,7 @@
                     </tr>
 
                     @include('insumosproductos.info')
+                    
 
                     @endforeach
                 </tbody>

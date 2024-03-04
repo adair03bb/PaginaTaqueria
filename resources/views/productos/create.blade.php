@@ -11,6 +11,11 @@
         </button>
       </div>
 
+
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+
       <form action="{{route('homeProductos.store')}}" method="post">
         @csrf 
       <div class="modal-body">

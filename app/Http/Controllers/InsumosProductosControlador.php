@@ -8,6 +8,7 @@ use App\Models\Productos;
 use Illuminate\Http\Request;
 use App\Models\UnidadMedidas;
 use App\Models\InsumosProductos;
+use Illuminate\Support\Facades\DB;
 
 class InsumosProductosControlador extends Controller
 {
@@ -27,9 +28,9 @@ class InsumosProductosControlador extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        //
+   
     }
 
     /**
@@ -37,39 +38,38 @@ class InsumosProductosControlador extends Controller
      */
     public function store(Request $request)
     {
+
         $ID_Producto = $request->input('ID_Producto');
-        $ID_Insumos = $request->input('ID_Insumo');
-        $cantidades = $request->input('cantidades');
+    $ID_Categoria = $request->input('ID_Categoria');
+    $ID_Insumos = $request->input('ID_Insumo');
+    $cantidades = $request->input('cantidades');
+    $ID_UnidadMedida = $request->input('ID_UnidadMedida');
 
-        // Obtener la categoría asociada al producto
-        $producto = Productos::find($ID_Producto);
-        $ID_Categoria = $producto->ID_Categoria;
-        
-        foreach ($ID_Insumos as $ID_Insumo) {
-            $insumo = Insumos::find($ID_Insumo);
-
-            if (!$insumo) {
-                throw new \Exception("No se encontró el insumo con ID $ID_Insumo.");
-            }
-
+    foreach ($ID_Insumos as $index => $ID_Insumo) {
+        // Verificar si el índice existe en el array cantidades
+        if (isset($cantidades[$index])) {
+            // Crear una nueva instancia de InsumosProductos para cada insumo
             $insumosProductos = new InsumosProductos;
-            $insumosProductos->cantidad = $cantidades[$ID_Insumo];
+            $insumosProductos->cantidad = $cantidades[$index];
             $insumosProductos->ID_Insumo = $ID_Insumo;
             $insumosProductos->ID_Producto = $ID_Producto;
             $insumosProductos->ID_Categoria = $ID_Categoria;
 
-         // Utilizar la relación para obtener la unidad de medida del insumo correspondiente
-    $unidadMedida = $insumo->unidadMedida;
+            // Verificar si el índice existe en el array ID_UnidadMedida
+            if (isset($ID_UnidadMedida[$index])) {
+                $insumosProductos->ID_UnidadMedida = $ID_UnidadMedida[$index];
+            } else {
+                // Puedes asignar un valor por defecto o lanzar una excepción según tu lógica
+                $insumosProductos->ID_UnidadMedida = 1; // Por ejemplo, asignar un valor por defecto (ajusta según tus necesidades)
+            }
 
-    if (!$unidadMedida) {
-        throw new \Exception("No se pudo obtener la unidad de medida para el insumo con ID $ID_Insumo.");
+            // Guardar cada instancia por separado
+            $insumosProductos->save();
+        }
     }
 
-    $insumosProductos->ID_UnidadMedida = $unidadMedida->id;
-    $insumosProductos->save();
-        }
-    
-        return redirect()->back();
+    $request->session()->flash('success', 'Insumos agregados correctamente');
+    return redirect()->back();
 
     }
 
@@ -94,39 +94,6 @@ class InsumosProductosControlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ID_Producto = $request->input('ID_Producto');
-        $ID_Insumos = $request->input('ID_Insumo');
-        $cantidades = $request->input('cantidades');
-
-        // Obtener la categoría asociada al producto
-        $producto = Productos::find($ID_Producto);
-        $ID_Categoria = $producto->ID_Categoria;
-        
-        foreach ($ID_Insumos as $ID_Insumo) {
-            $insumo = Insumos::find($ID_Insumo);
-
-            if (!$insumo) {
-                throw new \Exception("No se encontró el insumo con ID $ID_Insumo.");
-            }
-
-            $insumosProductos =InsumosProductos::find($id);
-            $insumosProductos->cantidad = $cantidades[$ID_Insumo];
-            $insumosProductos->ID_Insumo = $ID_Insumo;
-            $insumosProductos->ID_Producto = $ID_Producto;
-            $insumosProductos->ID_Categoria = $ID_Categoria;
-
-         // Utilizar la relación para obtener la unidad de medida del insumo correspondiente
-    $unidadMedida = $insumo->unidadMedida;
-
-    if (!$unidadMedida) {
-        throw new \Exception("No se pudo obtener la unidad de medida para el insumo con ID $ID_Insumo.");
-    }
-
-    $insumosProductos->ID_UnidadMedida = $unidadMedida->id;
-    $insumosProductos->update();
-        }
-    
-        return redirect()->back();
     }
 
     /**

@@ -21,6 +21,22 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
         AGREGAR PRODUCTO
         </button>
+
+        
+       <!-- Mostrar mensaje de éxito -->
+@if(session('success'))
+    <div id="successMessage" class="alert alert-success">
+        {{ session('success') }}
+    </div>
+
+    <script>
+        // Agrega un retraso de 2000 milisegundos (2 segundos) y luego oculta el mensaje
+        setTimeout(function(){
+            document.getElementById('successMessage').style.display = 'none';
+        }, 2000);
+    </script>
+@endif
+
         
         <br><br>
 
@@ -50,12 +66,25 @@
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$productos->id}}">
                             ELIMINAR   
                         </button>
-        
+
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createInsumos{{$productos->id}}" data-producto-id="{{$productos->id}}">
+                            AGR.INSUMOS   
+                        </button>
+                        @include('productos.agregarInsumos')
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#verInsumosModal{{$productos->id}}">
+                            VER INSUMOS
+                        </button>
+
+                        @include('productos.verInsumos', ['insumosProductos' => $productos->insumosProductos, 'id' => $productos->id])
+
+                        
+
                         </td>
                     </tr>
 
                     @include('productos.info')
-
+                   
                     @endforeach
                 </tbody>
             </table>
@@ -63,7 +92,6 @@
 
         @include('productos.create')
 </div>
-
 </div>
 
 @endsection
