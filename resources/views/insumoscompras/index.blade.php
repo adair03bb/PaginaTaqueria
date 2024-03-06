@@ -51,7 +51,7 @@
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$insumosCompras->id}}">
                             EDITAR
                         </button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$insumosCompras->id}}">
+                        <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#delete{{$insumosCompras->id}}">
                             ELIMINAR   
                         </button>
         
