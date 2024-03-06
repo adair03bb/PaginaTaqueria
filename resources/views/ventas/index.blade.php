@@ -108,4 +108,16 @@
         </div>
     </div>
 
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-image"> <img src="{{ asset('imagenes/llevar.jpg') }}" alt="SECCION DE VENTAS" class="img-fluid" style="margin: 1rem;">
+                </div>
+                <h5 class="card-title">PARA LLEVAR</h5>
+                <p class="card-text">Sección de pedidos para llevar.</p>
+                <a href="{{url('')}}" class="btn btn-primary">Ir a pedidos :D</a>
+            </div>
+        </div>
+    </div>
+
 @endsection
