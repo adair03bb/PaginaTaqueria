@@ -78,7 +78,13 @@
 
                         @include('productos.verInsumos', ['insumosProductos' => $productos->insumosProductos, 'id' => $productos->id])
 
-                        
+                        <button type="button" class="btn btn-warning mt-2" data-toggle="modal" data-target="#editarInsumosModal{{$productos->id}}">
+                            EDITAR INSUMOS
+                        </button>
+
+                        @include('productos.editarInsumos', ['productos' => $productos])
+
+
 
                         </td>
                     </tr>

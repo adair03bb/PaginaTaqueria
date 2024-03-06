@@ -73,6 +73,49 @@ class InsumosProductosControlador extends Controller
 
     }
 
+
+    public function editarInsumos(Request $request, $id)
+{
+    // Validaciones de formulario
+    $request->validate([
+        'cantidades.*' => 'numeric|nullable',
+        'insumos.*' => 'exists:insumos,id',
+        'unidadesMedida.*' => 'exists:unidadmedidas,id', // Nueva validación para las unidades de medida
+    ]);
+
+    try {
+        // Obtén el producto con sus insumos asociados
+        $producto = Productos::with('insumosProductos.unidadMedida')->find($id);
+
+        if (!$producto) {
+            return redirect()->back()->with('error', 'Producto no encontrado');
+        }
+
+        // Itera sobre los insumos actuales y actualiza las cantidades, insumos y unidades de medida
+        foreach ($producto->insumosProductos as $insumoProducto) {
+            $insumoProducto->cantidad = $request->input('cantidades.' . $insumoProducto->id);
+            $insumoProducto->ID_Insumo = $request->input('insumos.' . $insumoProducto->id);
+            $insumoProducto->ID_UnidadMedida = $request->input('unidadesMedida.' . $insumoProducto->id);
+            $insumoProducto->save();
+        }
+
+        return redirect()->back()->with('success', 'Insumos actualizados correctamente');
+    } catch (\Exception $e) {
+        // Manejar cualquier excepción que pueda ocurrir durante la actualización
+        return redirect()->back()->with('error', 'Error al actualizar los insumos: ' . $e->getMessage());
+    }
+}
+
+
+public function mostrarVistaEditarInsumos($id)
+{
+    $producto = Productos::with('insumosProductos.insumo')->find($id);
+    $insumos = Insumos::all();
+
+    return view('editarInsumos', compact('producto', 'insumos'));
+}
+    
+
     /**
      * Display the specified resource.
      */
@@ -94,7 +137,10 @@ class InsumosProductosControlador extends Controller
      */
     public function update(Request $request, $id)
     {
+        
     }
+
+    
 
     /**
      * Remove the specified resource from storage.

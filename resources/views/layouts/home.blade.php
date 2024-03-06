@@ -21,6 +21,7 @@
     </head>
 
     <body>
+    
 
     <header>
         <img src="{{ asset('imagenes/LOGO_TAQ_SINFONDO.png') }}" alt="Logo de Taquería Chester" class="logo">

@@ -17,11 +17,5 @@ class MostrarInsumosControlador extends Controller
         return view('productos.mostrarInsumos', compact('insumosProductos'));
     }
 
-    public function actualizarInsumo(Request $request, $id)
-    {
-        $insumoProducto = InsumosProductos::with('insumo', 'unidadMedida')
-            ->find($id);
-
-        return view('productos.actualizarInsumos', compact('insumosProductos'));
-    }
+   
 }

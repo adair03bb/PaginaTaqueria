@@ -52,6 +52,8 @@ Route::resource('homeUbicacion', UbicacionControlador::class);
 Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
 Route::resource('homeVentas', VentasControlador::class);
 Route::get('/mostrar-insumos/{productoId}', [MostrarInsumosControlador::class, 'verInsumos'])->name('verInsumos');
+Route::put('/editarInsumos/{id}', [InsumosProductosControlador::class, 'editarInsumos'])->name('editarInsumos');
+
 
 
 
