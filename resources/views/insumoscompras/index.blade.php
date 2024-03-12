@@ -31,9 +31,10 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">INSUMO</th>
-                        <th scope="col">UNIDAD DE MEDIDA</th>
+                        <th scope="col">U.MEDIDA</th>
                         <th scope="col">CANTIDAD</th>
-                        <th scope="col">COSTO</th>
+                        <th scope="col">C.UNITARIO</th>
+                        <th scope="col">C.TOTAL</th>
                         <th scope="col">FECHA DE COMPRA</th>
                         <th scope="col">ACCIONES</th>
                     </tr>
@@ -45,6 +46,7 @@
                         <td> {{$insumosCompras->Insumos->nombre}} </td>
                         <td> {{$insumosCompras->UnidadMedidas->nombre}} </td>
                         <td> {{$insumosCompras->cantidad}} </td>
+                        <td>{{$insumosCompras->costo / $insumosCompras->cantidad}}</td>
                         <td> {{$insumosCompras->costo}} </td>
                         <td> {{$insumosCompras->fecha}} </td>
                         <td>

@@ -51,10 +51,9 @@ Route::resource('homeMenuPub', MenuPubControlador::class);
 Route::resource('homeUbicacion', UbicacionControlador::class);
 Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
 Route::resource('homeVentas', VentasControlador::class);
-Route::get('/mostrar-insumos/{productoId}', [MostrarInsumosControlador::class, 'verInsumos'])->name('verInsumos');
-Route::put('/editarInsumos/{id}', [InsumosProductosControlador::class, 'editarInsumos'])->name('editarInsumos');
+Route::post('/insumosproductos/store', [InsumosProductosControlador::class, 'store'])->name('insumosproductos.store');
 Route::delete('/insumosproductos/{id}', [InsumosProductosControlador::class, 'destroy'])->name('insumosproductos.destroy');
-
+Route::put('/editarInsumos/{id}', [InsumosProductosControlador::class, 'editarInsumos'])->name('editarInsumos');
 
 
 
