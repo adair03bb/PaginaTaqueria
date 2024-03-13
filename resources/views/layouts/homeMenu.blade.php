@@ -18,9 +18,14 @@
         />
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        
     </head>
 
     <body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <header>
         <img src="{{ asset('imagenes/LOGO_TAQ_SINFONDO.png') }}" alt="Logo de Taquería Chester" class="logo">
