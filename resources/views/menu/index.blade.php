@@ -68,8 +68,8 @@
                 <div class="card-body">
                     <div class="card-image"> <img src="{{ asset('imagenes/ventas.jpg') }}" alt="SECCION DE VENTAS" class="img-fluid" style="margin: 1rem;">
                     </div>
-                    <h5 class="card-title">SECCIÓN DE VENTAS</h5>
-                    <p class="card-text">Administra tus ventas.</p>
+                    <h5 class="card-title">SECCIÓN DE ORDENES</h5>
+                    <p class="card-text">Administra tus ordenes.</p>
                     <a href="{{url('homeVentas')}}" class="btn btn-primary">Ir a ventas :D</a>
                 </div>
             </div>
