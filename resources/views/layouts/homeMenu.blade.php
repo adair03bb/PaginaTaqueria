@@ -33,6 +33,8 @@
         <p>¡En precio y calidad somos la mejor opción!</p>
     </header>
 
+    <h3 class="title-menu">SECCIONES MÁS FRECUENTES</h3>
+
         @yield('content')
         <!-- Bootstrap JavaScript Libraries -->
         <script

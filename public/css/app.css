@@ -226,6 +226,12 @@ section.awSlider > img {
   width: 200px;
 }
 
+.title-menu{
+  text-align: center;
+  margin-top: 10px;
+}
+
+
 /*ESTILO DEL FOOTER*/
 footer {
     background-color: #ff6f00;

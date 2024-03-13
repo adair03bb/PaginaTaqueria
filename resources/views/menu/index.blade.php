@@ -36,10 +36,10 @@
         </div>
     </div>
 
-
-    <div class="col-md-12 d-flex">
-
+   
+    <div class="col-md-9 d-flex">
         <div class="col-md-4">
+        
             <div class="card">
                 <div class="card-body">
                     <div class="card-image"> <img src="{{ asset('imagenes/compras.jpg') }}" alt="SECCION DE COMPRAS" class="img-fluid" style="margin: 1rem;">
