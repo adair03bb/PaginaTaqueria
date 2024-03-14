@@ -70,7 +70,7 @@
                     </div>
                     <h5 class="card-title">SECCIÓN DE ORDENES</h5>
                     <p class="card-text">Administra tus ordenes.</p>
-                    <a href="{{url('homeVentas')}}" class="btn btn-primary">Ir a ventas :D</a>
+                    <a href="{{url('homeVentas')}}" class="btn btn-primary">Ir a ordenes :D</a>
                 </div>
             </div>
         </div>
