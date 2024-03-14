@@ -15,7 +15,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <div class="card-image"> <img src="{{ asset('imagenes/mesa1.jpg') }}" alt="SECCION DE MESAS" class="img-fluid" style="margin: 1rem;">
+                <div class="card-image"> <img src="{{ asset('imagenes/mesa1.jpg') }}" alt="SECCION DE ORDENES" class="img-fluid" style="margin: 1rem;">
                 </div>
                 <h5 class="card-title">MESA 1</h5>
                 <p class="card-text">Mesa 1 para clientes :D</p>

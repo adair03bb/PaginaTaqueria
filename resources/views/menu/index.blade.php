@@ -66,7 +66,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <div class="card-image"> <img src="{{ asset('imagenes/ventas.jpg') }}" alt="SECCION DE VENTAS" class="img-fluid" style="margin: 1rem;">
+                    <div class="card-image"> <img src="{{ asset('imagenes/ventas.jpg') }}" alt="SECCION DE ORDENES" class="img-fluid" style="margin: 1rem;">
                     </div>
                     <h5 class="card-title">SECCIÓN DE ORDENES</h5>
                     <p class="card-text">Administra tus ordenes.</p>
