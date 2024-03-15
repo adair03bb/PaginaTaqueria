@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>VENTAS</title>
+        <title>ORDENES</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta

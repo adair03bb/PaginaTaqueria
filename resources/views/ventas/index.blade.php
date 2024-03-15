@@ -19,7 +19,7 @@
                 </div>
                 <h5 class="card-title">MESA 1</h5>
                 <p class="card-text">Mesa 1 para clientes :D</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 1 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 1 :D</a>
             </div>
         </div>
     </div>

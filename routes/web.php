@@ -15,6 +15,7 @@ use App\Http\Controllers\InsumosComprasControlador;
 use App\Http\Controllers\MostrarInsumosControlador;
 use App\Http\Controllers\ProductosVentasControlador;
 use App\Http\Controllers\InsumosProductosControlador;
+use App\Http\Controllers\OrdenControlador;
 
 
 
@@ -49,13 +50,13 @@ Route::resource('homeMenu', MenuControlador::class);
 Route::resource('homePublico', PublicoControlador::class);
 Route::resource('homeMenuPub', MenuPubControlador::class);
 Route::resource('homeUbicacion', UbicacionControlador::class);
-Route::resource('homeUnidadMedidas', UnidadMedidasControlador::class);
+Route::resource('homeUnidadMedidas', UnidadMedidasControoladr::class);
 Route::resource('homeVentas', VentasControlador::class);
 Route::post('/insumosproductos/store', [InsumosProductosControlador::class, 'store'])->name('insumosproductos.store');
 Route::delete('/insumosproductos/{id}', [InsumosProductosControlador::class, 'destroy'])->name('insumosproductos.destroy');
 Route::put('/editarInsumos/{id}', [InsumosProductosControlador::class, 'editarInsumos'])->name('editarInsumos');
-
-
+Route::get('/orden/agregar', [OrdenControlador::class, 'crear'])->name('orden.crear');
+Route::post('/orden/guardar', [OrdenControlador::class, 'guardar'])->name('orden.guardar');
 
 
 
