@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>MENÚ DE ADMINSTRACIÓN</title>
+        <title>MENÚ DE ORDENES</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -33,7 +33,7 @@
         <p>¡En precio y calidad somos la mejor opción!</p>
     </header>
 
-    <h3 class="title-menu">SECCIONES MÁS FRECUENTES</h3>
+    <h3 class="title-menu">SECCIÓN DE ORDENES</h3>
 
         @yield('content')
         <!-- Bootstrap JavaScript Libraries -->

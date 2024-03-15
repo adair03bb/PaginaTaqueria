@@ -12,7 +12,7 @@
 <a href="{{url('homeVentas')}}">
             <img class="img-atras" src="{{ asset('imagenes/atras.png') }}">
 </a>
-    <h1>Agregar Orden</h1>
+    <h1>Completa los campos para realizar tu orden</h1>
     <form action="{{ route('orden.guardar') }}" method="POST">
         @csrf
         <div>
