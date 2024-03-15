@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>ORDENES</title>
+        <title>MENÚ DE ADMINSTRACIÓN</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -18,15 +18,22 @@
         />
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        
     </head>
 
     <body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <header>
         <img src="{{ asset('imagenes/LOGO_TAQ_SINFONDO.png') }}" alt="Logo de Taquería Chester" class="logo">
         <h1>Taquería Chester</h1>
         <p>¡En precio y calidad somos la mejor opción!</p>
     </header>
+
+    <h3 class="title-menu">SECCIONES MÁS FRECUENTES</h3>
 
         @yield('content')
         <!-- Bootstrap JavaScript Libraries -->
@@ -46,7 +53,9 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
    
-
+</br>
+</br>
+</br>
 <footer>
     <p>&copy; 2024 Taquería Chester</p>
 </footer>

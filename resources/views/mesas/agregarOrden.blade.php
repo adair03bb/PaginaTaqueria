@@ -1,12 +1,18 @@
+@extends('layouts.homeVentas')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Orden - Taquería</title>
+    <title>Agregar Orden</title>
 </head>
 <body>
-    <h1>Agregar Orden a la Taquería</h1>
+<a href="{{url('homeVentas')}}">
+            <img class="img-atras" src="{{ asset('imagenes/atras.png') }}">
+</a>
+    <h1>Agregar Orden</h1>
     <form action="{{ route('orden.guardar') }}" method="POST">
         @csrf
         <div>
@@ -28,3 +34,4 @@
     </form>
 </body>
 </html>
+@endsection
