@@ -11,21 +11,25 @@
         body {
             text-align: center; /* Para centrar los textos */
             position: relative; /* Se necesita para el posicionamiento absoluto del enlace */
+        }
 
         .enlace-atras {
             position: absolute; /* Para posicionar el enlace de forma absoluta */
             top: 180px; /* Ajusta la distancia desde arriba */
             left: 10px; /* Ajusta la distancia desde la izquierda */
         }
+
         form {
             display: inline-block;
             text-align: left; /* Para alinear el contenido del formulario a la izquierda */
         }
+
         label {
             display: inline-block;
             width: 150px; /* Ancho fijo para los labels */
             text-align: right; /* Para alinear el texto del label a la derecha */
         }
+
         input[type="text"],
         input[type="number"],
         button {
@@ -50,7 +54,7 @@
             @foreach(['al pastor', 'de carnitas', 'de bistec', 'de barbacoa'] as $tipo)
                 <div>
                     <label>{{ ucfirst($tipo) }}:</label>
-                    <input type="number" name="tacos[{{ $tipo }}]" min="0" value="0">
+                    <input type="text" name="tacos[{{ $tipo }}]" value="0">
                 </div>
             @endforeach
         </div>
