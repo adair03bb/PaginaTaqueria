@@ -7,11 +7,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Orden</title>
+    <style>
+        body {
+            text-align: center; /* Para centrar los textos */
+            position: relative; /* Se necesita para el posicionamiento absoluto del enlace */
+
+        .enlace-atras {
+            position: absolute; /* Para posicionar el enlace de forma absoluta */
+            top: 180px; /* Ajusta la distancia desde arriba */
+            left: 10px; /* Ajusta la distancia desde la izquierda */
+        }
+        form {
+            display: inline-block;
+            text-align: left; /* Para alinear el contenido del formulario a la izquierda */
+        }
+        label {
+            display: inline-block;
+            width: 150px; /* Ancho fijo para los labels */
+            text-align: right; /* Para alinear el texto del label a la derecha */
+        }
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 200px; /* Ancho fijo para los inputs y botón */
+            margin-bottom: 10px; /* Espacio entre los inputs y botón */
+        }
+    </style>
 </head>
 <body>
-<a href="{{url('homeVentas')}}">
-            <img class="img-atras" src="{{ asset('imagenes/atras.png') }}">
-</a>
+    <a href="{{url('homeVentas')}}" class="enlace-atras">
+        <img class="img-atras" src="{{ asset('imagenes/atras.png') }}">
+    </a>
     <h1>Completa los campos para realizar tu orden</h1>
     <form action="{{ route('orden.guardar') }}" method="POST">
         @csrf
