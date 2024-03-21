@@ -31,7 +31,7 @@
                 </div>
                 <h5 class="card-title">MESA 2</h5>
                 <p class="card-text">Mesa 2 para clientes :D</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 2 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 2 :D</a>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
                 </div>
                 <h5 class="card-title">MESA 3</h5>
                 <p class="card-text">Mesa 3 para clientes.</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 3 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 3 :D</a>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                 </div>
                 <h5 class="card-title">MESA 4</h5>
                 <p class="card-text">Mesa 4 para clientes.</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 4 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 4 :D</a>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                 </div>
                 <h5 class="card-title">MESA 5</h5>
                 <p class="card-text">Mesa 5 para clientes.</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 5 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 5 :D</a>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
                 </div>
                 <h5 class="card-title">MESA 6</h5>
                 <p class="card-text">Mesa 6 para clientes.</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 6 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 6 :D</a>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                 </div>
                 <h5 class="card-title">MESA 7</h5>
                 <p class="card-text">Mesa 7 para clientes.</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 7 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 7 :D</a>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
                 </div>
                 <h5 class="card-title">MESA 8</h5>
                 <p class="card-text">Mesa 8 para clientes.</p>
-                <a href="{{url('')}}" class="btn btn-primary">Dar mesa 8 :D</a>
+                <a href="{{ route('orden.crear') }}" class="btn btn-primary">Dar mesa 8 :D</a>
             </div>
         </div>
     </div>
