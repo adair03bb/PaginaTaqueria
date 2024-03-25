@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-02-2024 a las 22:38:56
+-- Tiempo de generación: 20-03-2024 a las 17:31:51
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -45,6 +45,17 @@ INSERT INTO `categoria` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(11) NOT NULL,
+  `fecha` datetime NOT NULL
+(7, '2024-03-20 06:39:44');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `failed_jobs`
 --
 
@@ -68,23 +79,24 @@ CREATE TABLE `insumos` (
   `id` int(10) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
-  `ID_UnidadMedida` int(10) NOT NULL
+  `ID_UnidadMedida` int(10) NOT NULL,
+  `estado` varchar(20) DEFAULT 'Habilitado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `insumos`
 --
 
-INSERT INTO `insumos` (`id`, `nombre`, `descripcion`, `ID_UnidadMedida`) VALUES
-(1, 'Carne', 'Carne de cerdo fresca', 2),
-(2, 'cilantro', 'cilantro fresco', 3),
-(3, 'chile', 'chile4 chilaca', 2),
-(4, 'limon', 'limon fresco', 2),
-(5, 'jitomate', 'jitomate fresco', 2),
-(6, 'pepino', 'pepino fresco', 2),
-(7, 'chilaca', 'chile chilaca seco', 2),
-(8, 'cebolla', 'cebolla blanca fresca', 4),
-(9, 'piña', 'piña fresca', 5);
+INSERT INTO `insumos` (`id`, `nombre`, `descripcion`, `ID_UnidadMedida`, `estado`) VALUES
+(1, 'Carne', 'Carne de cerdo fresca', 2, 'Deshabilitado'),
+(2, 'cilantro', 'cilantro fresco', 3, 'Deshabilitado'),
+(3, 'chile', 'chile chilaca', 2, 'Deshabilitado'),
+(4, 'limón', 'limon fresco', 2, 'Habilitado'),
+(5, 'jitomate', 'jitomate fresco', 2, 'Habilitado'),
+(6, 'pepinooo', 'pepino fresco', 2, 'Habilitado'),
+(7, 'chilaca', 'chile chilaca seco', 2, 'Deshabilitado'),
+(8, 'cebolla', 'cebolla blanca fresca', 4, 'Deshabilitado'),
+(9, 'piña', 'piña fresca', 5, 'Habilitado');
 
 -- --------------------------------------------------------
 
@@ -98,15 +110,18 @@ CREATE TABLE `insumoscompras` (
   `costo` float(10,2) NOT NULL,
   `ID_Insumo` int(10) NOT NULL,
   `ID_UnidadMedida` int(10) NOT NULL,
-  `fecha` datetime NOT NULL
+  `ID_Compra` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `insumoscompras`
 --
 
-INSERT INTO `insumoscompras` (`id`, `cantidad`, `costo`, `ID_Insumo`, `ID_UnidadMedida`, `fecha`) VALUES
-(1, 85.00, 3800.00, 1, 2, '2024-02-23 13:48:00');
+INSERT INTO `insumoscompras` (`id`, `cantidad`, `costo`, `ID_Insumo`, `ID_UnidadMedida`, `ID_Compra`) VALUES
+(18, 80.00, 46.25, 1, 2, 3),
+(19, 3.00, 5.00, 2, 3, 4),
+(20, 10.00, 13.00, 3, 2, 5),
+(22, 10.00, 13.00, 7, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -118,21 +133,23 @@ CREATE TABLE `insumosproductos` (
   `id` int(10) NOT NULL,
   `cantidad` float(10,2) NOT NULL,
   `ID_Insumo` int(10) NOT NULL,
-  `ID_Producto` int(10) NOT NULL
+  `ID_UnidadMedida` int(10) NOT NULL,
+  `ID_Producto` int(10) NOT NULL,
+  `ID_Categoria` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `insumosproductos`
 --
 
-INSERT INTO `insumosproductos` (`id`, `cantidad`, `ID_Insumo`, `ID_Producto`) VALUES
-(1, 300.00, 1, 11),
-(2, 20.00, 2, 11),
-(3, 20.00, 1, 14),
-(4, 5.00, 5, 14),
-(5, 2.00, 7, 14),
-(6, 2.00, 8, 14),
-(7, 6.00, 9, 14);
+INSERT INTO `insumosproductos` (`id`, `cantidad`, `ID_Insumo`, `ID_UnidadMedida`, `ID_Producto`, `ID_Categoria`) VALUES
+(1, 200.00, 1, 7, 17, 9),
+(8, 200.00, 1, 7, 25, 11),
+(9, 60.00, 2, 7, 25, 11),
+(11, 150.00, 1, 7, 26, 10),
+(12, 30.00, 5, 7, 26, 10),
+(14, 220.00, 1, 7, 27, 9),
+(15, 20.00, 4, 7, 27, 9);
 
 -- --------------------------------------------------------
 
@@ -217,10 +234,10 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `ID_Categoria`) VALUES
-(11, 'orden de tacos', 30.00, 9),
-(12, 'orden de tacos', 30.00, 11),
-(13, 'orden de tacos', 30.00, 12),
-(14, 'trompo', 6500.00, 9);
+(17, 'orden de tacos', 25.00, 9),
+(25, 'bbbbbbb', 23.00, 11),
+(26, 'prueba', 25.00, 10),
+(27, 'prueba 2', 12.00, 9);
 
 -- --------------------------------------------------------
 
@@ -259,23 +276,6 @@ INSERT INTO `unidadmedidas` (`id`, `nombre`) VALUES
 (6, 'cajas'),
 (7, 'gramos');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `users`
---
-
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Índices para tablas volcadas
 --
@@ -284,6 +284,12 @@ CREATE TABLE `users` (
 -- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -305,6 +311,7 @@ ALTER TABLE `insumos`
 --
 ALTER TABLE `insumoscompras`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ID_Compra` (`ID_Compra`),
   ADD KEY `ID_Insumo` (`ID_Insumo`),
   ADD KEY `ID_UnidadMedida` (`ID_UnidadMedida`);
 
@@ -314,7 +321,9 @@ ALTER TABLE `insumoscompras`
 ALTER TABLE `insumosproductos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ID_Insumo` (`ID_Insumo`),
-  ADD KEY `ID_Producto` (`ID_Producto`);
+  ADD KEY `ID_Producto` (`ID_Producto`),
+  ADD KEY `ID_UnidadMedida` (`ID_UnidadMedida`),
+  ADD KEY `ID_Categoria` (`ID_Categoria`);
 
 --
 -- Indices de la tabla `inventario`
@@ -364,13 +373,6 @@ ALTER TABLE `unidadmedidas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -379,6 +381,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `categoria`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -390,19 +398,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `insumos`
 --
 ALTER TABLE `insumos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `insumoscompras`
 --
 ALTER TABLE `insumoscompras`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `insumosproductos`
 --
 ALTER TABLE `insumosproductos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
@@ -426,7 +434,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `productosventas`
@@ -439,12 +447,6 @@ ALTER TABLE `productosventas`
 --
 ALTER TABLE `unidadmedidas`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -461,14 +463,17 @@ ALTER TABLE `insumos`
 --
 ALTER TABLE `insumoscompras`
   ADD CONSTRAINT `insumoscompras_ibfk_1` FOREIGN KEY (`ID_Insumo`) REFERENCES `insumos` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `insumoscompras_ibfk_2` FOREIGN KEY (`ID_UnidadMedida`) REFERENCES `unidadmedidas` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `insumoscompras_ibfk_2` FOREIGN KEY (`ID_UnidadMedida`) REFERENCES `unidadmedidas` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `insumoscompras_ibfk_3` FOREIGN KEY (`ID_Compra`) REFERENCES `compras` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `insumosproductos`
 --
 ALTER TABLE `insumosproductos`
   ADD CONSTRAINT `insumosproductos_ibfk_1` FOREIGN KEY (`ID_Insumo`) REFERENCES `insumos` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `insumosproductos_ibfk_2` FOREIGN KEY (`ID_Producto`) REFERENCES `productos` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `insumosproductos_ibfk_2` FOREIGN KEY (`ID_Producto`) REFERENCES `productos` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `insumosproductos_ibfk_3` FOREIGN KEY (`ID_Categoria`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `insumosproductos_ibfk_4` FOREIGN KEY (`ID_UnidadMedida`) REFERENCES `unidadmedidas` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `inventario`
