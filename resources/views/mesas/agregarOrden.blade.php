@@ -30,11 +30,15 @@
             text-align: right; /* Para alinear el texto del label a la derecha */
         }
 
+        select,
         input[type="text"],
-        input[type="number"],
         button {
-            width: 200px; /* Ancho fijo para los inputs y botón */
+            width: 150px; /* Ancho fijo para los inputs y botón */
             margin-bottom: 10px; /* Espacio entre los inputs y botón */
+        }
+
+        span {
+            margin-left: 10px; /* Margen entre el precio y el descuento */
         }
     </style>
 </head>
@@ -50,11 +54,19 @@
             <input type="text" id="nombre_cliente" name="nombre_cliente" required>
         </div>
         <div>
-            <h2>Selecciona tus tacos</h2>
-            @foreach(['al pastor', 'de carnitas', 'de bistec', 'de barbacoa'] as $tipo)
+            <h2>Selecciona tus productos</h2>
+            @foreach($productos as $producto)
                 <div>
-                    <label>{{ ucfirst($tipo) }}:</label>
-                    <input type="text" name="tacos[{{ $tipo }}]" value="0">
+                    <label>{{ $producto->nombre }}:</label>
+                    <input type="text" name="productos[{{ $producto->id }}]" value="0">
+                    <label for="precio_{{ $producto->id }}">Precio:</label>
+                    <span>{{ $producto->precio }}</span>
+                    <label for="descuento_{{ $producto->id }}">Desc. (%):</label>
+                    <select id="descuento_{{ $producto->id }}" name="descuento_{{ $producto->id }}">
+                        @for ($i = 0; $i <= 30; $i += 5)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
                 </div>
             @endforeach
         </div>

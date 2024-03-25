@@ -51,6 +51,19 @@ INSERT INTO `categoria` (`id`, `nombre`) VALUES
 CREATE TABLE `compras` (
   `id` int(11) NOT NULL,
   `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `fecha`) VALUES
+(1, '2024-03-20 04:51:05'),
+(2, '2024-03-20 05:12:37'),
+(3, '2024-03-20 05:19:20'),
+(4, '2024-03-20 05:22:00'),
+(5, '2024-03-20 05:27:30'),
+(6, '2024-03-20 06:28:06'),
 (7, '2024-03-20 06:39:44');
 
 -- --------------------------------------------------------

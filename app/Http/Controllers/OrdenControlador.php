@@ -4,27 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OrdenTaco;
+use App\Models\Productos;
 
 class OrdenControlador extends Controller
 {
     public function crear()
     {
-        return view('mesas.agregarOrden');
+        $productos = Productos::all();
+        return view('mesas.agregarOrden', compact('productos'));
     }
-    public function guardar(Request $request)
-{
-    $orden = new OrdenTaco();
-    $orden->nombre_cliente = $request->nombre_cliente;
-    $orden->al_pastor = $request->input('tacos.al_pastor', 0);
-    $orden->de_carnitas = $request->input('tacos.de_carnitas', 0);
-    $orden->de_bistec = $request->input('tacos.de_bistec', 0);
-    $orden->de_barbacoa = $request->input('tacos.de_barbacoa', 0);
 
-    try {
-        $orden->save();
-    } catch (\Exception $e) {
-        dd($e);
+    public function guardar(Request $request)
+    {
+        $orden = new OrdenTaco();
+        $orden->nombre_cliente = $request->nombre_cliente;
+        
+        // Iterar sobre los productos y guardar la cantidad y el descuento en la orden
+        foreach ($request->productos as $id => $cantidad) {
+            $orden->productos()->attach($id, [
+                'cantidad' => $cantidad,
+                'descuento' => $request->input('descuento_' . $id),
+            ]);
+        }
+
+        try {
+            $orden->save();
+        } catch (\Exception $e) {
+            dd($e);
+        }
+
+        return back()->with('success', 'Orden agregada con éxito.');
     }
-    return back()->with('success', 'Orden agregada con éxito.');
-}
 }
